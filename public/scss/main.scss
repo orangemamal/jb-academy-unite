@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* 변수 파일은 항상 하위 scss로 존재할 것 */
+@import
+    '../scss/abstracts/variable',
+    '../scss/abstracts/mixins',
+    '../scss/abstracts/transition',
+
+    '../scss/base/font',
+    '../scss/base/reset',
+    '../scss/base/image',
+    '../scss/base/icon',
+
+    '../scss/components/tab',
+    '../scss/components/slick',
+    '../scss/components/button',
+
+    '../scss/layout/header',
+    '../scss/layout/common',
+    '../scss/layout/notFound';

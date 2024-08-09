@@ -1,0 +1,27 @@
+.tab {
+  &.basic {
+    height: 4.8rem;
+    box-shadow: 0 0 6px 0 rgba(39, 40, 44, 0.4);
+    background: $gray100;
+    border-radius: 5rem;
+    padding: 0.6rem;
+    width: fit-content;
+    button {
+      height: 3.6rem;
+      border-radius: 5rem;
+      padding: 0.6rem 2.4rem;
+      color: $gray700;
+      @include font(1.7rem);
+      margin-right: 0.8rem;
+      transition: all 0.4s ease-in-out;
+      &:last-of-type {
+        margin-right: 0;
+      }
+      &.select {
+        background: $gray700;
+        color: $white;
+        font-weight: $bold;
+      }
+    }
+  }
+}

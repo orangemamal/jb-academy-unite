@@ -1,0 +1,17 @@
+.icon {
+  @each $icon24 in nav_signup, nav_start, nav_support, nav_signup_active, nav_start_active, nav_support_active {
+    &.#{$icon24} {
+      background: center / contain no-repeat url($icon-path + 'icon_24_#{$icon24}.svg');
+      min-width: 2.4rem;
+      min-height: 2.4rem;
+    }
+  }
+  @each $icon80 in benefit_01, benefit_02, benefit_03, arrow_prev, arrow_next {
+    &.#{$icon80} {
+      background: center / contain no-repeat url($icon-path + 'icon_80_#{$icon80}.svg');
+      min-width: 8rem;
+      min-height: 8rem;
+    }
+  }
+}
+
