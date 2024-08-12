@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, {useState} from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,11 +8,11 @@ import "slick-carousel/slick/slick-theme.css";
 const SectionFirst = () => {
 
   const settings = {
-    speed: 3000,
+    speed: 4000,
     dots: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnHover: false,
@@ -26,7 +26,7 @@ const SectionFirst = () => {
 
   return (
     <section className="section_first">
-      <Slider {...settings} className={"section_first_slider"}>
+      <Slider {...settings} className="section_first_slider">
         <article className="first_banner">
           <div className="backdrop_opacity">
 

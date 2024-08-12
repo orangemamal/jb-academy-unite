@@ -1,9 +1,12 @@
 "use client"
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Image from "next/image";
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import {useSelector} from "react-redux";
 
 const Header = () => {
+  const nowPage = useSelector(state => state.userCommon.nowPage);
 
   const [navListItems, setNavListItems] = useState([
     { id: 1, title: 'JB학원연합', status: false },
@@ -13,16 +16,53 @@ const Header = () => {
     { id: 5, title: '오시는 길', status: false },
   ])
 
+  // useEffect(() => {
+  //   const updatedNavListItems = navListItems.map((item, index) => {
+  //     if (nowPage === index) {
+  //       return { ...item, status: !item.status };
+  //     } else {
+  //       return { ...item, status: false };
+  //     }
+  //   })
+  //
+  //   setNavListItems(updatedNavListItems);
+  // }, [nowPage, navListItems])
+
+
   const moveNavigation = (item, index) => {
     setNavListItems(prevItems =>
-      prevItems.map((navItem, idx) =>
-        idx === index ? { ...navItem, status: !navItem.status } : navItem
-      )
+      prevItems.map((navItem, idx) => {
+        if (idx === index) {
+          return { ...navItem, status: !navItem.status };
+        } else {
+          return { ...navItem, status: false };
+        }
+      })
+    )
+    const browserHeight = window.innerHeight
+    scroll.scrollTo(browserHeight * index)
+  }
+
+
+  const openSupportPopup = () => {
+    window.open(
+      'https://939.co.kr/slk2671/',
+      '_blank',
+      'width=1120,height=700'
     )
   }
 
+  const [mounted, setMounted] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMounted(false)
+    }, 600)
+
+  })
+
   return (
-    <header>
+    <header className={`animate__animated ${mounted ? 'animate__fadeInDown' : ''}`}>
       <h1>
         <Image
           src="/images/img_logo_color.png"
@@ -45,18 +85,24 @@ const Header = () => {
       </ul>
 
       <div className="function_group">
-        <button>
-          <i className="icon nav_signup"/>
-          <span>가입문의</span>
-        </button>
-        <button>
-          <i className="icon nav_start"/>
-          <span>시작하기</span>
-        </button>
-        <button>
-          <i className="icon nav_support"/>
-          <span>원격지원</span>
-        </button>
+        <Link href="https://daejeon.edudongne.com/woori_join.html" target="_blank" className="animate__animated scale">
+          <button>
+            <i className="icon nav_signup"/>
+            <span>가입문의</span>
+          </button>
+        </Link>
+        <Link href="https://woori2.edudongne.com/login" target="_blank" className="animate__animated scale">
+          <button>
+            <i className="icon nav_start"/>
+            <span>시작하기</span>
+          </button>
+        </Link>
+        <a onClick={openSupportPopup} className="animate__animated scale">
+          <button>
+            <i className="icon nav_support"/>
+            <span>원격지원</span>
+          </button>
+        </a>
       </div>
     </header>
   );

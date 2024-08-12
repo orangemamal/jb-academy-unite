@@ -1,4 +1,5 @@
 import "../../public/scss/main.scss";
+import 'animate.css/animate.min.css';
 
 export const metadata = {
   title: "JB학원연합",

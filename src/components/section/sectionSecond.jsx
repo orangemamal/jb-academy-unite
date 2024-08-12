@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SectionSecond = () => {
+const SectionSecond = ({ className }) => {
 
   const oneVoiceItems = [
     { path: '01', alternative: '이', content: '제 우리가 필요한 기능 위주의 솔루션을 만나볼수 있습니다.'},
@@ -10,7 +10,7 @@ const SectionSecond = () => {
   ]
 
   return (
-    <section className="section_second">
+    <section className={`section_second ${className}`}>
       <article>
         <div className="backdrop_opacity">
           <img src="/images/img_with_one_voice.svg" alt="이구동성" />

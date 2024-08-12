@@ -30,6 +30,13 @@ $regular: 400;
 $medium: 500;
 $bold: 700;
 
+/* media-query */
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
 $ff: 'Spoqa Han Sans Neo', 'sans-serif';
 
 @each $num in 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40 {

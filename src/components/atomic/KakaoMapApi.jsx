@@ -48,7 +48,7 @@ export default function KakaoMapApi({selectedName, selectedAddress}) {
           });
 
           const infowindow = new window.kakao.maps.InfoWindow({
-            content: `<div style="width:150px;text-align:center;padding:6px 0;">${selectedName}</div>`,
+            content: `<div class="map_marker">${selectedName}</div>`,
           });
           infowindow.open(map, marker);
         } else {
