@@ -2,9 +2,12 @@
 
 import React, {useEffect, useState} from 'react';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setPageValue} from "@/lib/userCommon";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   let [addClassMenu, setAddClassMenu] = useState(false);
   const nowPage = useSelector(state => state.userCommon.nowPage);
 
@@ -21,7 +24,6 @@ const Header = () => {
   }
 
   useEffect(() => {
-    // 상태를 업데이트할 때 무한 루프에 빠지지 않도록 새로운 배열을 생성하여 업데이트
     setNavListItems((prevNavListItems) =>
       prevNavListItems.map((item, index) => {
         return {
@@ -34,18 +36,21 @@ const Header = () => {
 
   const moveNavigation = (item, index) => {
     setNavListItems(prevItems =>
-      prevItems.map((navItem, idx) => {
-        if (idx === index) {
-          return { ...navItem, status: !navItem.status };
-        } else {
-          return { ...navItem, status: false };
-        }
-      })
-    )
-    const browserHeight = window.innerHeight
-    scroll.scrollTo(browserHeight * index)
-  }
+      prevItems.map((navItem, idx) => ({
+        ...navItem,
+        status: idx === index,  // 클릭한 항목만 활성화
+      }))
+    );
+    dispatch(setPageValue({ nowPage: index })); // nowPage 상태 업데이트
+  };
 
+  useEffect(() => {
+    if (nowPage !== null) {  // nowPage가 유효한 경우에만 스크롤 이동
+      const browserHeight = window.innerHeight;
+      scroll.scrollTo(browserHeight * nowPage);
+      console.log(nowPage)
+    }
+  }, [nowPage]);
 
   const openSupportPopup = () => {
     window.open(
@@ -82,7 +87,7 @@ const Header = () => {
       </ul>
 
       <div className={`function_group ${addClassMenu ? 'active' : ''}`}>
-        <a href="https://jeonbuk.edudongne.com/join.html" target="_blank" className="animate__animated scale">
+        <a href="https://jeonbuk.edudongne.com/join.html" target="_self" className="animate__animated scale">
           <button>
             <i className="icon nav_signup"/>
             <span>가입문의</span>

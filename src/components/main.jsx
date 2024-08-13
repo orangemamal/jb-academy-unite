@@ -65,25 +65,25 @@ const Main = () => {
     window.addEventListener("touchmove", handleTouchMove, { passive: true });
     window.addEventListener("touchend", handleTouchEnd, { passive: true });
 
-
     return () => {
       window.removeEventListener("wheel", handleScroll);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
-      if (scrollTimeout) clearTimeout(scrollTimeout); // 컴포넌트 언마운트 시 타이머 클리어
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, [scrollTimeout]);
 
   useEffect(() => {
     const windowHeight = window.innerHeight;
-    console.log(windowHeight)
-    dispatch(setPageValue({ nowPage: page }))
+    console.log(page)
 
     window.scrollTo({
       top: windowHeight * page,
       behavior: "smooth",
     });
+
+    dispatch(setPageValue({ nowPage: page }))
   }, [page]);
 
   return (
