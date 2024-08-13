@@ -6,6 +6,7 @@ import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } fro
 import {useSelector} from "react-redux";
 
 const Header = () => {
+  let [addClassMenu, setAddClassMenu] = useState(false);
   const nowPage = useSelector(state => state.userCommon.nowPage);
 
   const [navListItems, setNavListItems] = useState([
@@ -16,18 +17,21 @@ const Header = () => {
     { id: 5, title: '오시는 길', status: false },
   ])
 
-  // useEffect(() => {
-  //   const updatedNavListItems = navListItems.map((item, index) => {
-  //     if (nowPage === index) {
-  //       return { ...item, status: !item.status };
-  //     } else {
-  //       return { ...item, status: false };
-  //     }
-  //   })
-  //
-  //   setNavListItems(updatedNavListItems);
-  // }, [nowPage, navListItems])
+  const activeMenu = () => {
+    setAddClassMenu(prevState => !prevState);
+  }
 
+  useEffect(() => {
+    // 상태를 업데이트할 때 무한 루프에 빠지지 않도록 새로운 배열을 생성하여 업데이트
+    setNavListItems((prevNavListItems) =>
+      prevNavListItems.map((item, index) => {
+        return {
+          ...item,
+          status: nowPage === index,  // 현재 페이지에 해당하는 항목만 활성화
+        };
+      })
+    );
+  }, [nowPage]);  // nowPage가 변경될 때만 useEffect가 실행되도록 설정
 
   const moveNavigation = (item, index) => {
     setNavListItems(prevItems =>
@@ -74,17 +78,19 @@ const Header = () => {
         />
       </h1>
 
-      <ul className="nav_list">
+      <ul className={`nav_list ${addClassMenu ? 'active' : ''}`}>
         {navListItems.map((item, index) => (
           <li
             key={index}
             className={`${item.status ? 'active' : ''}`}
             onClick={() => moveNavigation(item, index)}
-          >{item.title}</li>
+          >
+            {item.title}
+          </li>
         ))}
       </ul>
 
-      <div className="function_group">
+      <div className={`function_group ${addClassMenu ? 'active' : ''}`}>
         <Link href="https://daejeon.edudongne.com/woori_join.html" target="_blank" className="animate__animated scale">
           <button>
             <i className="icon nav_signup"/>
@@ -104,6 +110,8 @@ const Header = () => {
           </button>
         </a>
       </div>
+
+      <i className="icon menu" onClick={() => activeMenu()} />
     </header>
   );
 };

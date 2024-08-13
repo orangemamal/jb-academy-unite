@@ -6,6 +6,13 @@
       min-height: 2.4rem;
     }
   }
+  @each $icon32 in menu {
+    &.#{$icon32} {
+      background: center / contain no-repeat url($icon-path + 'icon_32_#{$icon32}.svg');
+      min-width: 3.2rem;
+      min-height: 3.2rem;
+    }
+  }
   @each $icon80 in benefit_01, benefit_02, benefit_03, arrow_prev, arrow_next {
     &.#{$icon80} {
       background: center / contain no-repeat url($icon-path + 'icon_80_#{$icon80}.svg');

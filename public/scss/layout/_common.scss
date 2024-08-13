@@ -314,6 +314,23 @@
   }
 }
 
+@media (max-width: $md) {
+  .container {
+    width: 100%;
+    main {
+      section {
+        width: 100%;
+        &.section_first {
+          article {
+            &.first_banner {
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 @media (max-width: $xl) {
   .container {
