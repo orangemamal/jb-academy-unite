@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import KakaoMapApi from '@/components/atomic/KakaoMapApi';
 import BasicTabComp from '@/components/atomic/BasicTabComp';
 
-const SectionFifth = ({ className }) => {
+const SectionFifth = () => {
 
   const [tabItems, setTabItems] = useState([
     {item: '전라북도학원연합회', value: true, address: '전라북도 전주시 완산구 중화산동 2가 615-6번지, 2층 전라북도 학원연합회'},
@@ -34,7 +34,7 @@ const SectionFifth = ({ className }) => {
   };
 
   return (
-    <section className={`section_fifth ${className}`}>
+    <section className="section_fifth">
       <article className="tab_wrap">
         <BasicTabComp
           tabItems={tabItems}

@@ -24,8 +24,8 @@
                 height: 13rem;
               }
               h4 {
-                margin: 4rem 0 10rem;
-                @include font(2.2rem);
+                margin: 4rem 0 6rem;
+                @include font(2rem);
                 font-weight: $light;
               }
               .benefit_group {
@@ -43,14 +43,17 @@
                   &:nth-of-type(2) {
                     margin: 0 5.6rem;
                   }
-                  p {
-                    color: rgba(255, 255, 255, 0.8);
-                    @include font(1.6rem);
-                    margin: 1.6rem 0 0.8rem;
-                  }
-                  h3 {
-                    @include font(2.6rem);
-                    font-weight: $bold;
+                  .bundle {
+                    text-align: center;
+                    p {
+                      color: rgba(255, 255, 255, 0.8);
+                      @include font(1.6rem);
+                      margin: 1.6rem 0 0.8rem;
+                    }
+                    h3 {
+                      @include font(2.6rem);
+                      font-weight: $bold;
+                    }
                   }
                 }
               }
@@ -87,6 +90,9 @@
             align-items: center;
             justify-content: center;
             color: $white;
+            img {
+              height: 8rem;
+            }
             [data-type="divider"] {
               width: 100%;
               max-width: 119.4rem;
@@ -102,7 +108,7 @@
             p {
               @include font(1.6rem);
               font-weight: $light;
-              padding: 2.4rem 0 6.4rem;
+              padding: 2.4rem 0 4rem;
             }
             .spelling_bundle {
               display: flex;
@@ -112,6 +118,7 @@
                 margin-bottom: 0;
               }
               img {
+                height: 5.6rem;
                 margin-right: 1.2rem;
               }
               span {
@@ -323,7 +330,48 @@
         &.section_first {
           article {
             &.first_banner {
-
+              background-image: url($img-path + 'img_background_01_mobile.jpg');
+              .backdrop_opacity {
+                img {
+                  height: 5.6rem;
+                }
+                h4 {
+                  @include font(1.4rem);
+                  padding: 0;
+                  text-align: center;
+                  margin: 2.4rem 4rem;
+                }
+                .benefit_group {
+                  flex-direction: column;
+                  .benefit_bundle {
+                    display: flex;
+                    padding: 0.4rem 2.4rem;
+                    flex-direction: row;
+                    border-radius: 1.6rem;
+                    width: auto;
+                    &:nth-of-type(2) {
+                      margin: 2.4rem 0;
+                    }
+                    i {
+                      display: inline-block;
+                      min-width: 4.8rem;
+                      margin-right: 1.6rem;
+                    }
+                    .bundle {
+                      text-align: left;
+                      p {
+                        display: block;
+                        margin: 0 0 0.4rem;
+                      }
+                      h3 {
+                        display: block;
+                        @include font(2.2rem);
+                        font-weight: $bold;
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

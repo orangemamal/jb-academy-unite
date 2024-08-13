@@ -3,7 +3,7 @@
 import React from 'react';
 import Slider from "react-slick";
 
-const SectionFourth = ({ className }) => {
+const SectionFourth = () => {
 
   const fourthSectionItems = [
     {no: '01', title: '가성비 좋은 서비스', list: ['학원업무의 A~Z까지<br/>One Stop 서비스', '원생 수 제한 없이 사용 가능']},
@@ -28,7 +28,7 @@ const SectionFourth = ({ className }) => {
   };
 
   return (
-    <section className={`section_fourth ${className}`}>
+    <section className="section_fourth">
       <Slider {...settings} className={"section_third_slider"}>
         {fourthSectionItems.map((item, index) => (
           <article key={index}>

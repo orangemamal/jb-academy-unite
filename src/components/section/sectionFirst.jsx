@@ -26,7 +26,7 @@ const SectionFirst = () => {
 
   return (
     <section className="section_first">
-      <Slider {...settings} className="section_first_slider">
+      {/*<Slider {...settings} className="section_first_slider">*/}
         <article className="first_banner">
           <div className="backdrop_opacity">
 
@@ -38,8 +38,10 @@ const SectionFirst = () => {
               {benefitItems.map((item, index) => (
                 <div className="benefit_bundle" key={index}>
                   <i className={`icon ${item.icon}`}/>
-                  <p>{item.subtitle}</p>
-                  <h3>{item.title}</h3>
+                  <div className="bundle">
+                    <p>{item.subtitle}</p>
+                    <h3>{item.title}</h3>
+                  </div>
                 </div>
               ))}
             </div>
@@ -47,8 +49,8 @@ const SectionFirst = () => {
           </div>
         </article>
 
-        <article className="second_banner" />
-      </Slider>
+        {/*<article className="second_banner" />*/}
+      {/*</Slider>*/}
     </section>
   );
 };

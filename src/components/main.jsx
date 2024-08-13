@@ -39,16 +39,45 @@ const Main = () => {
       setScrollTimeout(newScrollTimeout); // 새로운 타이머 설정
     };
 
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      touchEndY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = () => {
+      if (touchStartY - touchEndY > 0) {
+        // 스와이프 업
+        setPage((prevPage) => Math.min(prevPage + 1, 5)); // 최대 5페이지로 제한
+      } else if (touchEndY - touchStartY > 0) {
+        // 스와이프 다운
+        setPage((prevPage) => Math.max(prevPage - 1, 0)); // 최소 0페이지로 제한
+      }
+    };
+
     window.addEventListener("wheel", handleScroll, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
       if (scrollTimeout) clearTimeout(scrollTimeout); // 컴포넌트 언마운트 시 타이머 클리어
     };
   }, [scrollTimeout]);
 
   useEffect(() => {
     const windowHeight = window.innerHeight;
+    console.log(windowHeight)
     dispatch(setPageValue({ nowPage: page }))
 
     window.scrollTo({
@@ -59,11 +88,11 @@ const Main = () => {
 
   return (
     <main>
-      <SectionFirst className={`animate__animated_scroll ${page === 0 ? 'fadeIn' : 'fadeOut'}`} />
-      <SectionSecond className={`animate__animated_scroll ${page === 1 ? 'fadeIn' : 'fadeOut'}`} />
-      <SectionThird className={`animate__animated_scroll ${page === 2 ? 'fadeIn' : 'fadeOut'}`} />
-      <SectionFourth className={`animate__animated_scroll ${page === 3 ? 'fadeIn' : 'fadeOut'}`} />
-      <SectionFifth className={`animate__animated_scroll ${page === 4 ? 'fadeIn' : 'fadeOut'}`} />
+      <SectionFirst />
+      <SectionSecond />
+      <SectionThird />
+      <SectionFourth />
+      <SectionFifth />
     </main>
   );
 };

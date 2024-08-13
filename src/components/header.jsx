@@ -1,7 +1,6 @@
 "use client"
 
 import React, {useEffect, useState} from 'react';
-import Image from "next/image";
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 import {useSelector} from "react-redux";
 
@@ -62,20 +61,12 @@ const Header = () => {
     setTimeout(() => {
       setMounted(false)
     }, 600)
-
   })
 
   return (
     <header className={`animate__animated ${mounted ? 'animate__fadeInDown' : ''}`}>
       <h1>
-        <Image
-          src="/images/img_logo_color.png"
-          alt="JB전북연합"
-          className="dark:invert"
-          width={162}
-          height={48}
-          priority
-        />
+        <img src="/images/img_logo_color.png" alt="JB전북연합" />
       </h1>
 
       <ul className={`nav_list ${addClassMenu ? 'active' : ''}`}>
