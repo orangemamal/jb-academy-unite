@@ -130,6 +130,7 @@ header {
 
 @media (max-width: $lg) {
   header {
+    width: 100vw;
     height: 8rem;
     padding: 0 2.4rem;
     z-index: 2000;
