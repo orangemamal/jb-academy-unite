@@ -82,18 +82,20 @@ const Header = () => {
       </ul>
 
       <div className={`function_group ${addClassMenu ? 'active' : ''}`}>
-        <Link href="https://daejeon.edudongne.com/woori_join.html" target="_blank" className="animate__animated scale">
+        <a href="https://jeonbuk.edudongne.com/join.html" target="_blank" className="animate__animated scale">
           <button>
             <i className="icon nav_signup"/>
             <span>가입문의</span>
           </button>
-        </Link>
-        <Link href="https://woori2.edudongne.com/login" target="_blank" className="animate__animated scale">
+        </a>
+
+        <a href="https://jb.edudongne.com/login" target="_blank" className="animate__animated scale">
           <button>
             <i className="icon nav_start"/>
             <span>시작하기</span>
           </button>
-        </Link>
+        </a>
+
         <a onClick={openSupportPopup} className="animate__animated scale">
           <button>
             <i className="icon nav_support"/>
@@ -102,9 +104,9 @@ const Header = () => {
         </a>
       </div>
 
-      <i className="icon menu" onClick={() => activeMenu()} />
+      <i className="icon menu" onClick={() => activeMenu()}/>
     </header>
-  );
+);
 };
 
 export default Header;
