@@ -1,0 +1,20 @@
+{
+  "name": "JB학원연합",
+  "short_name": "JB학원",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "128x128",
+      "type": "image/ico"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://jeonbuk.edudongne.com",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

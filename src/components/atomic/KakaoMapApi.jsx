@@ -23,7 +23,7 @@ export default function KakaoMapApi({selectedName, selectedAddress}) {
 
     const timer = setInterval(() => {
       checkKakaoLoaded();
-    }, 100);
+    }, 1000);
 
     if (isKakaoLoaded) {
       clearInterval(timer);

@@ -129,6 +129,9 @@ header {
 }
 
 @media (max-width: $lg) {
+  html, body {
+    overflow: auto;
+  }
   header {
     width: 100vw;
     height: 8rem;
