@@ -64,15 +64,12 @@ export const metadata = {
   //   site: '@site',
   //   cardType: 'summary_large_image',
   // },
-  // google
-  google : {
-    name : "google-site-verification",
-    content : "aW7PYRopKu79On9-qK0I7VSjbLgPX97Pajf0PbHMB9o"
-  },
-  // naver
-  naver : {
-    name : "naver-site-verification",
-    content : "b7f3881865a3b45acc32f264dd5b1d3e5ae49b18"
+  // naver & google
+  verification: {
+    other: {
+      'naver-site-verification': 'b7f3881865a3b45acc32f264dd5b1d3e5ae49b18',
+    },
+    google: 'aW7PYRopKu79On9-qK0I7VSjbLgPX97Pajf0PbHMB9o',
   },
   // manifest 속성은 웹 애플리케이션이 웹 앱으로 동작할 때 필요한 메타데이터를 담고 있는 manifest.json 파일의 위치를 지정하는 설정입니다. 이 파일은 주로 Progressive Web App (PWA)에서 사용됩니다.
   manifest: '/manifest.json',
